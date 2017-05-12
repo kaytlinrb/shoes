@@ -4,7 +4,7 @@
   <ul>
   <%  @shoes.each() do |shoe|%>
 
-  <li><a href="/shoe/<%= shoe.id() %>"><%= shoe.brand() %></a> $<%= shoe.price() %></li>
+  <li><%= shoe.brand() %> $<%= shoe.price() %></li>
 
   <% end  %>
   </ul>
@@ -12,5 +12,4 @@
   <h4>Add Shoe Brands</h4>
   <% end  %>
 
-  <a href="/shoe/new"><button class="btn" type="button">Add New Brand</button></a>
   <a href="/"><button class="btn" type="button">Store List</button></a>

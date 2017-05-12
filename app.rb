@@ -21,6 +21,7 @@ end
 
 get('/store/:id') do
   @store = Store.find(params.fetch('id').to_i())
+  @shoes = @store.shoes.all()
   erb(:store)
 end
 
@@ -43,19 +44,21 @@ get('/store/:id/update') do
   erb(:store_edit_form)
 end
 
-get('/brands') do
+get('stores/brands') do
   @shoes = Shoe.all()
   erb(:shoes)
 end
 
-get('/shoe/new') do
+get('/store/:id/shoe/new')do
+  @store = Store.find(params.fetch('id').to_i)
   erb(:shoe_form)
 end
 
-post('/shoes') do
+post('/store/:id/shoes') do
+  @store = Store.find(params.fetch('id').to_i())
   brand = params.fetch('new_brand')
   price = params.fetch('price')
-  newshoe = Shoe.create({:brand => brand, :price => price})
-  @shoes = Shoe.all()
-  erb(:shoes)
+  newshoe = Shoe.create({:brand => brand, :price => price, :store_id => @store.id()})
+  @shoes = @store.shoes.all()
+  erb(:store)
 end
