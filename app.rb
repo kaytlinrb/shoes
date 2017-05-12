@@ -42,3 +42,20 @@ get('/store/:id/update') do
   @store = Store.find(params.fetch('id').to_i())
   erb(:store_edit_form)
 end
+
+get('/brands') do
+  @shoes = Shoe.all()
+  erb(:shoes)
+end
+
+get('/shoe/new') do
+  erb(:shoe_form)
+end
+
+post('/shoes') do
+  brand = params.fetch('new_brand')
+  price = params.fetch('price')
+  newshoe = Shoe.create({:brand => brand, :price => price})
+  @shoes = Shoe.all()
+  erb(:shoes)
+end
