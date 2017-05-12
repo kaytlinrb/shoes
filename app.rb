@@ -15,6 +15,7 @@ end
 post('/stores') do
   store = params.fetch('new_store')
   newstore = Store.create({:name => store})
+  @stores = Store.all()
   erb(:index)
 end
 

@@ -1,0 +1,13 @@
+<h1>Update Recipe: <%= @store.name() %></h1>
+
+<div class="container">
+
+  <form action="/store/<%= @store.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="new_store">New Store Name:</label>
+      <input type="new_store" name="new_store">
+    </div>
+    <button class="btn" type="submit">Save Store Name</button>
+  </form>
+</div>

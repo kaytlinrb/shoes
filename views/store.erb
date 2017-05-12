@@ -1,0 +1,13 @@
+<h1 class ="jumbotron"> <%= @store.name() %> </h1>
+<div class="container">
+
+  <a href="/store/<%= @store.id()  %>/update"><button class="btn" type="button" name="button">Change Store Name</button></a>
+  <form action="/store/<%= @store.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+
+    <button class="btn" type="submit">Delete This Store</button>
+  </form>
+
+  <a href="/"><button class="btn" type="button" name="button">Go Home</button></a>
+
+</div>
